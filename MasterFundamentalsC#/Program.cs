@@ -174,71 +174,79 @@ public class Program
         //    Console.WriteLine(n.Key + ": " + n.Value);
         //}
 
-        BankAccount b1 = new BankAccount("Saqeeb", 0 , 
-        Guid.Parse("4958FF9F-9233-47E7-A994-583DB0E327AB"));
+        //BankAccount b1 = new BankAccount("Saqeeb", 0 , 
+        //Guid.Parse("4958FF9F-9233-47E7-A994-583DB0E327AB"));
 
-        b1.DisplayDetails();
+        //b1.DisplayDetails();
 
-        b1.CurrentBalance();
+        //b1.CurrentBalance();
 
-        b1.Withdraw(5000);
-        b1.Deposite(10000);
+        //b1.Withdraw(5000);
+        //b1.Deposite(10000);
 
-        b1.CurrentBalance();
+        //b1.CurrentBalance();
+        int[] nums = new int[50];
 
-
-
-    }
-}
-
-public class BankAccount
-{
-    public string? AccountHolder { get; set; }
-    public double AccountBalance { get; set; }
-
-    public Guid AccountID { get; set; }
-
-    //constructor
-    public BankAccount(string name , double amount , Guid guid)
-    {
-        AccountHolder = name;
-        AccountBalance = amount;
-        AccountID = guid;
-    }
-
-    //methods
-    public void DisplayDetails()
-    {
-        Console.WriteLine("Account Details: ");
-        Console.WriteLine($"Name: {AccountHolder}");
-        Console.WriteLine($"AccountNo: {AccountID}");
-        Console.WriteLine();
-    }
-
-    public double Deposite(double amount)
-    {
-        double added = AccountBalance + amount;
-        Console.WriteLine($"Deposited Amount : {amount} + Balance({AccountBalance}) = {added}$ ");
-        AccountBalance = added;
-        return added;
-    }
-
-    public void Withdraw(double amount)
-    {
-        if (amount > AccountBalance)
-        { 
-            Console.WriteLine("Insufficient Account Balance");
-        }
-        else
+        for (int i = 0; i < 50; i++)
         {
-            double withdraw = AccountBalance - amount;
-            Console.WriteLine($"withdrawn Amount : {amount} - Balance({AccountBalance}) = {withdraw}$ ");
-            AccountBalance = withdraw;
+            nums[i] = i + 1;
+        }
+        foreach (int i in nums)
+        {
+            Console.WriteLine(i);
         }
     }
-    public double CurrentBalance()
-    {
-        Console.WriteLine("AccountBalance is : "+ AccountBalance + "$");
-        return AccountBalance;
-    }
 }
+
+//public class BankAccount
+//{
+//    public string? AccountHolder { get; set; }
+//    public double AccountBalance { get; set; }
+
+//    public Guid AccountID { get; set; }
+
+//    //constructor
+//    public BankAccount(string name, double amount, Guid guid)
+//    {
+//        AccountHolder = name;
+//        AccountBalance = amount;
+//        AccountID = guid;
+//    }
+
+//    //methods
+//    public void DisplayDetails()
+//    {
+//        Console.WriteLine("Account Details: ");
+//        Console.WriteLine($"Name: {AccountHolder}");
+//        Console.WriteLine($"AccountNo: {AccountID}");
+//        Console.WriteLine();
+//    }
+
+//    public double Deposite(double amount)
+//    {
+//        double added = AccountBalance + amount;
+//        Console.WriteLine($"Deposited Amount : {amount} + Balance({AccountBalance}) = {added}$ ");
+//        AccountBalance = added;
+//        return added;
+//    }
+
+//    public void Withdraw(double amount)
+//    {
+//        if (amount > AccountBalance)
+//        {
+//            Console.WriteLine("Insufficient Account Balance");
+//        }
+//        else
+//        {
+//            double withdraw = AccountBalance - amount;
+//            Console.WriteLine($"withdrawn Amount : {amount} - Balance({AccountBalance}) = {withdraw}$ ");
+//            AccountBalance = withdraw;
+//        }
+//    }
+//    public double CurrentBalance()
+//    {
+//        Console.WriteLine("AccountBalance is : " + AccountBalance + "$");
+//        return AccountBalance;
+//    }
+//}
+
