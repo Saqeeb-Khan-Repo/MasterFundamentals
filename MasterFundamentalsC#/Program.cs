@@ -1,10 +1,15 @@
-﻿namespace MasterFundamentalsC_;
+﻿using System.Net;
+using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
 
-public class Program
-{
-    static void Main(string[] args)
-    {
-        //char operation = '+';
+namespace MasterFundamentalsC_;
+
+//public class Program
+//{
+//    static void Main(string[] args)
+//    {
+//        //char operation = '+';
 
         //switch (operation)
         //{
@@ -185,68 +190,164 @@ public class Program
         //b1.Deposite(10000);
 
         //b1.CurrentBalance();
-        int[] nums = new int[50];
+        //int[] nums = new int[50];
 
-        for (int i = 0; i < 50; i++)
+        //for (int i = 0; i < 50; i++)
+        //{
+        //    nums[i] = i + 1;
+        //}
+        //foreach (int i in nums)
+        //{
+        //    Console.WriteLine(i);
+
+
+        //public class BankAccount
+        //{
+        //    public string? AccountHolder { get; set; }
+        //    public double AccountBalance { get; set; }
+
+        //    public Guid AccountID { get; set; }
+
+        //    //constructor
+        //    public BankAccount(string name, double amount, Guid guid)
+        //    {
+        //        AccountHolder = name;
+        //        AccountBalance = amount;
+        //        AccountID = guid;
+        //    }
+
+        //    //methods
+        //    public void DisplayDetails()
+        //    {
+        //        Console.WriteLine("Account Details: ");
+        //        Console.WriteLine($"Name: {AccountHolder}");
+        //        Console.WriteLine($"AccountNo: {AccountID}");
+        //        Console.WriteLine();
+        //    }
+
+        //    public double Deposite(double amount)
+        //    {
+        //        double added = AccountBalance + amount;
+        //        Console.WriteLine($"Deposited Amount : {amount} + Balance({AccountBalance}) = {added}$ ");
+        //        AccountBalance = added;
+        //        return added;
+        //    }
+
+        //    public void Withdraw(double amount)
+        //    {
+        //        if (amount > AccountBalance)
+        //        {
+        //            Console.WriteLine("Insufficient Account Balance");
+        //        }
+        //        else
+        //        {
+        //            double withdraw = AccountBalance - amount;
+        //            Console.WriteLine($"withdrawn Amount : {amount} - Balance({AccountBalance}) = {withdraw}$ ");
+        //            AccountBalance = withdraw;
+        //        }
+        //    }
+        //    public double CurrentBalance()
+        //    {
+        //        Console.WriteLine("AccountBalance is : " + AccountBalance + "$");
+        //        return AccountBalance;
+        //    }
+      
+
+
+
+    public enum GenderOptions
+    {
+        Male, Female, Other
+    }
+    public abstract class Models
+    {
+        public string? Name { get; set; }
+        public double Salary { get; set; }
+        public string? Address { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public GenderOptions Gender { get; set; }
+        public bool IsEmployeed { get; set; }
+
+    }
+    public interface BankAccount
+    {
+        public void DisplayDetails();
+        public double Deposite(double amount);
+        public double Withdraw(double amount);
+        public void DisplaySalary();
+    }
+    public class Employee : Models, BankAccount
+    {
+        public double Deposite(double amount)
         {
-            nums[i] = i + 1;
+            return Salary += amount;
         }
-        foreach (int i in nums)
+
+        public void DisplayDetails()
         {
-            Console.WriteLine(i);
+            Console.WriteLine($"Employee: {Name}");
+            Console.WriteLine($"Employee: {Address}");
+            Console.WriteLine($"Employee DateOfBirth: {DateOfBirth}");
+            Console.WriteLine($"Employee Gender: {Gender}");
+            Console.WriteLine($"IsEmployeed: {IsEmployeed}");
+            Console.WriteLine();
+        }
+
+        public void DisplaySalary()
+        {
+            Console.WriteLine($"EmployeeSalary: {Salary}");
+        }
+
+        public double Withdraw(double amount)
+        {
+            return Salary -= amount;
         }
     }
+public class Program
+{
+    static void Main()
+    {
+        Employee employee = new Employee()
+        {
+            
+             Name = "Siraj",
+             Salary = 10000,
+             Address = "Magadi",
+             DateOfBirth = new DateTime(2004,11,03),
+             Gender = GenderOptions.Male,
+             IsEmployeed = true
+
+        };
+        employee.DisplayDetails();
+        employee.DisplaySalary();
+
+        Console.WriteLine("After Deposit");
+        employee.Deposite(10000);
+        employee.DisplayDetails();
+
+        Console.WriteLine("After Withdraw");
+        employee.Withdraw(5000);
+        employee.DisplayDetails();
+    }
 }
+ 
 
-//public class BankAccount
-//{
-//    public string? AccountHolder { get; set; }
-//    public double AccountBalance { get; set; }
 
-//    public Guid AccountID { get; set; }
+    
 
-//    //constructor
-//    public BankAccount(string name, double amount, Guid guid)
-//    {
-//        AccountHolder = name;
-//        AccountBalance = amount;
-//        AccountID = guid;
-//    }
 
-//    //methods
-//    public void DisplayDetails()
-//    {
-//        Console.WriteLine("Account Details: ");
-//        Console.WriteLine($"Name: {AccountHolder}");
-//        Console.WriteLine($"AccountNo: {AccountID}");
-//        Console.WriteLine();
-//    }
 
-//    public double Deposite(double amount)
-//    {
-//        double added = AccountBalance + amount;
-//        Console.WriteLine($"Deposited Amount : {amount} + Balance({AccountBalance}) = {added}$ ");
-//        AccountBalance = added;
-//        return added;
-//    }
 
-//    public void Withdraw(double amount)
-//    {
-//        if (amount > AccountBalance)
-//        {
-//            Console.WriteLine("Insufficient Account Balance");
-//        }
-//        else
-//        {
-//            double withdraw = AccountBalance - amount;
-//            Console.WriteLine($"withdrawn Amount : {amount} - Balance({AccountBalance}) = {withdraw}$ ");
-//            AccountBalance = withdraw;
-//        }
-//    }
-//    public double CurrentBalance()
-//    {
-//        Console.WriteLine("AccountBalance is : " + AccountBalance + "$");
-//        return AccountBalance;
-//    }
-//}
+
+
+
+
+
+
+
+
+
+
+
+
 
